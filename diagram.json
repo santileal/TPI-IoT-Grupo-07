@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "author": "Grupo 07 - UTN FRC",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht", "top": -143.7, "left": 282.6, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot",
+      "top": 213.3,
+      "left": 173.8,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledVerde",
+      "top": 280,
+      "left": 300,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "resVerde",
+      "top": 280,
+      "left": 380,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledAzul",
+      "top": 360,
+      "left": 300,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "resAzul",
+      "top": 360,
+      "left": 380,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled",
+      "top": 271.94,
+      "left": -105.37,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "resDht",
+      "top": -34.15,
+      "left": 142.6,
+      "rotate": 180,
+      "attrs": { "value": "10000" }
+    }
+  ],
+  "connections": [
+    [ "esp:3V3", "dht:VCC", "red", [] ],
+    [ "esp:GND.1", "dht:GND", "black", [] ],
+    [ "esp:D33", "dht:SDA", "green", [] ],
+    [ "esp:3V3", "pot:VCC", "red", [] ],
+    [ "esp:GND.1", "pot:GND", "black", [] ],
+    [ "esp:D32", "pot:SIG", "green", [] ],
+    [ "esp:D23", "resVerde:1", "green", [] ],
+    [ "resVerde:2", "ledVerde:A", "green", [] ],
+    [ "ledVerde:C", "esp:GND.1", "black", [] ],
+    [ "esp:D2", "resAzul:1", "blue", [] ],
+    [ "resAzul:2", "ledAzul:A", "blue", [] ],
+    [ "ledAzul:C", "esp:GND.1", "black", [] ],
+    [ "esp:3V3", "oled:VCC", "red", [] ],
+    [ "esp:GND.1", "oled:GND", "black", [] ],
+    [ "esp:D22", "oled:SCL", "green", [] ],
+    [ "esp:D21", "oled:SDA", "green", [] ],
+    [ "dht:SDA", "resDht:1", "green", [] ],
+    [ "resDht:2", "esp:3V3", "red", [] ]
+  ],
+  "dependencies": {}
+}
